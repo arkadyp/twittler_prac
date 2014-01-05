@@ -8,7 +8,7 @@ var Application = {
         app.showTweets.call(app);
       });
 
-      $('.tweets').find('.user').on('click', function() {
+      $('.tweets').on('click', '.user', function() {
         var username = $(this).text().slice(1);
         app.showTweets.call(app, username);        
       });
@@ -18,7 +18,6 @@ var Application = {
 
   showTweets: function(username) {
     var tweets;  
-    console.log(username);  
     if(username) { //show user tweets
       tweets = streams.users[username];      
     } else { //show all tweets
