@@ -13,7 +13,10 @@ var Application = {
     while(index >= 0){
       var tweet = streams.home[index];
       var $tweet = $('<li></li>');
-      $tweet.text('@' + tweet.user + ': ' + tweet.message);
+      var $user = $('<span class="user">@'+tweet.user+'</span>');    
+      $user.appendTo($tweet);
+      var $msg  = $('<span class="msg-body">: '+tweet.message+'</span>');
+      $msg.appendTo($tweet);      
       $tweet.appendTo($('.tweets'));
       index -= 1;
     }

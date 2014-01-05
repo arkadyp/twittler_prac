@@ -9,3 +9,13 @@ ul.tweets {
 li.tweets {
   list-style-type: none;
 }
+
+.user {
+	font-weight: bold;
+	color: blue;
+}
+
+.user:hover {
+	color: green;
+	cursor: pointer;
+}
