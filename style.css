@@ -1,0 +1,11 @@
+body {	
+  font-family: Helvetica, sans-serif;
+}
+
+ul.tweets {
+	padding-left: 0px ;
+}
+
+li.tweets {
+  list-style-type: none;
+}
