@@ -2,39 +2,36 @@ var Application = {
   init: function() {
     var app = this;
     $(document).ready(function(){      
-      app.showAllTweets();
+      app.showTweets();
 
       $('button.showAllTweets').on('click', function(){
-        app.showAllTweets.call(app);
+        app.showTweets.call(app);
       });
 
       $('.tweets').find('.user').on('click', function() {
         var username = $(this).text().slice(1);
-        app.showUserTweets.call(app, username);        
+        app.showTweets.call(app, username);        
       });
 
     });
   },
 
-  showAllTweets: function() {
-    $('.tweets').html('');
-    var index = streams.home.length - 1;
-    var $tweet; 
-    while(index >= 0){
-      $tweet = this.formatTweet(streams.home[index]);
-      $tweet.appendTo($('.tweets'));
-      index -= 1;      
+  showTweets: function(username) {
+    var tweets;  
+    console.log(username);  
+    if(username) { //show user tweets
+      tweets = streams.users[username];      
+    } else { //show all tweets
+      tweets = streams.home;
     }
-  },
+    var index = tweets.length - 1;
 
-  showUserTweets: function(user) {
-    $('.tweets').html('');
-    var index = streams.users[user].length - 1;
+    $('.tweets').html(''); //clear content
     var $tweet;
-    while(index >= 0){
-      $tweet = this.formatTweet(streams.users[user][index]);
-      $tweet.appendTo($('.tweets'));
-      index -= 1;      
+    while(index >= 0) {
+      $tweet = this.formatTweet(tweets[index]);
+      $tweet.appendTo('.tweets');
+      index -= 1;
     }
   },
 
