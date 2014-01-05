@@ -6,9 +6,9 @@ var Application = {
       var index = streams.home.length - 1;
       while(index >= 0){
         var tweet = streams.home[index];
-        var $tweet = $('<div></div>');
+        var $tweet = $('<li></li>');
         $tweet.text('@' + tweet.user + ': ' + tweet.message);
-        $tweet.appendTo($body);
+        $tweet.appendTo($('.tweets'));
         index -= 1;
       }
     });
