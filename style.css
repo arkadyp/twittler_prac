@@ -15,7 +15,11 @@ li.tweets {
 	color: blue;
 }
 
-.user:hover {
+.hashtag {
+  color: rgb(200,0,0);
+}
+
+.user:hover, .hashtag:hover {
 	color: green;
 	cursor: pointer;
 }
