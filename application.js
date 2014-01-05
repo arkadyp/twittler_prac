@@ -4,7 +4,9 @@ var Application = {
     $(document).ready(function(){      
       app.updateTweets();
 
-      $('button.updateTweets').on('click', app.updateTweets);          
+      $('button.updateTweets').on('click', function(){
+        app.updateTweets.call(app);
+      });          
     });
   },
 
@@ -15,7 +17,7 @@ var Application = {
       var $tweet = $('<li></li>');
       var $user = $('<span class="user">@'+tweet.user+'</span>');    
       $user.appendTo($tweet);
-      var $msg  = $('<span class="msg-body">: '+tweet.message+'</span>');
+      var $msg  = this.processHashtags(tweet.message);
       $msg.appendTo($tweet);      
       $tweet.appendTo($('.tweets'));
       index -= 1;
@@ -41,7 +43,12 @@ var Application = {
     if(content.length > 1) {  //since content span is triggered by hashtag, make sure that trailing content is added
       spans.push($('<span>'+content+'</span>'));
     }
-    
+
+    var $content = $('<span class="tweetBody"></span>');
+    _.each(spans, function($span) {
+      $span.appendTo($content);
+    });
+    return $content;
   }
 };
 
