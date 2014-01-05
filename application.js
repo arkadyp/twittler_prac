@@ -2,15 +2,15 @@ var Application = {
   init: function() {
     var app = this;
     $(document).ready(function(){      
-      app.updateTweets();
+      app.showAllTweets();
 
-      $('button.updateTweets').on('click', function(){
-        app.updateTweets.call(app);
+      $('button.showAllTweets').on('click', function(){
+        app.showAllTweets.call(app);
       });          
     });
   },
 
-  updateTweets: function() {
+  showAllTweets: function() {
     var index = streams.home.length - 1;
     while(index >= 0){
       var tweet = streams.home[index];
