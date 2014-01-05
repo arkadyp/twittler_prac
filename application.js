@@ -2,7 +2,9 @@ var Application = {
   init: function() {
     var app = this;
     $(document).ready(function(){      
-      app.updateTweets();          
+      app.updateTweets();
+
+      $('button.updateTweets').on('click', app.updateTweets);          
     });
   },
 
