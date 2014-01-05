@@ -12,22 +12,27 @@ var Application = {
 
   showAllTweets: function() {
     var index = streams.home.length - 1;
+    var $tweet; 
     while(index >= 0){
-      var tweet = streams.home[index];
-      var $tweet = $('<li></li>');
-      var $user = $('<span class="user">@'+tweet.user+'</span>');    
-      $user.appendTo($tweet);
-      var $msg  = this.processHashtags(tweet.message);
-      $msg.appendTo($tweet);      
+      $tweet = this.formatTweet(streams.home[index]);
       $tweet.appendTo($('.tweets'));
-      index -= 1;
+      index -= 1;      
     }
+  },
+
+  formatTweet: function(tweet) {
+    var $tweet = $('<li></li>');
+    var $user = $('<span class="user">@'+tweet.user+'</span>');    
+    $user.appendTo($tweet);
+    var $msg  = this.processHashtags(tweet.message);
+    $msg.appendTo($tweet);      
+    return $tweet;
   },
 
   processHashtags: function(message) {
     var words = message.split(' '); //split message into individual words
     var spans = []; //store spans of either content or hashtags
-    var content = ""; //store non hashtag content before dumping in 'spans' 
+    var content = ": "; //store non hashtag content before dumping in 'spans' 
     //var hashtag = ""; //store hashtag before dumping into span
     _.each(words, function(word) {
       if(word.charAt(0) === '#') { //if word starts with hashtag, create span for it    
