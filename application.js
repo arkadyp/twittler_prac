@@ -17,6 +17,7 @@ var Application = {
   },
 
   showAllTweets: function() {
+    $('.tweets').html('');
     var index = streams.home.length - 1;
     var $tweet; 
     while(index >= 0){
@@ -26,7 +27,15 @@ var Application = {
     }
   },
 
-  showUserTweets: function(user) {s    
+  showUserTweets: function(user) {
+    $('.tweets').html('');
+    var index = streams.users[user].length - 1;
+    var $tweet;
+    while(index >= 0){
+      $tweet = this.formatTweet(streams.users[user][index]);
+      $tweet.appendTo($('.tweets'));
+      index -= 1;      
+    }
   },
 
   formatTweet: function(tweet) {
