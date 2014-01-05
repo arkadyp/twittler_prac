@@ -6,7 +6,13 @@ var Application = {
 
       $('button.showAllTweets').on('click', function(){
         app.showAllTweets.call(app);
-      });          
+      });
+
+      $('.tweets').find('.user').on('click', function() {
+        var username = $(this).text().slice(1);
+        app.showUserTweets.call(app, username);        
+      });
+
     });
   },
 
@@ -18,6 +24,9 @@ var Application = {
       $tweet.appendTo($('.tweets'));
       index -= 1;      
     }
+  },
+
+  showUserTweets: function(user) {s    
   },
 
   formatTweet: function(tweet) {
