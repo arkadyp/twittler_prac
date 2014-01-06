@@ -13,6 +13,10 @@ var Application = {
         app.showTweets.call(app, username);        
       });
 
+      $('.tweets').on('click', '.hashtag', function() {
+        app.showHashtags.call(app, $(this).text());
+      });
+
     });
   },
 
@@ -68,6 +72,19 @@ var Application = {
       $span.appendTo($content);
     });
     return $content;
+  },
+
+  showHashtags: function(hashtag) {
+    var tweets = streams.home;
+    var index = tweets.length - 1;
+    $('.tweets').html('');
+    while(index >= 0) {
+      if(tweets[index].message.indexOf(hashtag) !== -1) {
+        $tweet = this.formatTweet(tweets[index]);
+        $tweet.appendTo('.tweets');
+      }
+      index--;
+    }
   }
 };
 
