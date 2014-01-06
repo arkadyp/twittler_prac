@@ -18,7 +18,7 @@ var Application = {
 
   showTweets: function(username) {
     var tweets;  
-    if(username) { //show user tweets
+    if(username && username in streams.users) { //show user tweets
       tweets = streams.users[username];      
     } else { //show all tweets
       tweets = streams.home;
