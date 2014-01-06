@@ -43,6 +43,8 @@ var Application = {
     var $user = $('<span class="user">@'+tweet.user+'</span>');    
     $user.appendTo($tweet);
     var $msg  = this.processHashtags(tweet.message);
+    var $time = $('<span> ('+jQuery.timeago(tweet.created_at)+')</span>');
+    $time.appendTo($msg);
     $msg.appendTo($tweet);      
     return $tweet;
   },
