@@ -23,7 +23,19 @@ var Application = {
   },
 
   displaySendOptions: function() {
-    $('.composeFields').fadeToggle('hidden');
+    if($(this).text() === 'Compose Tweet') {
+      $(this).text('Hide User Tweet Options');
+      $('.tweets').find('li').css({"display" : "none"});
+      $('.tweets').find('li').fadeIn();
+      $('.composeFields').fadeToggle();
+    } else {
+      $(this).text('Compose Tweet');
+      $('.tweets').find('li').css({"display" : "none"});      
+      $('.composeFields').fadeToggle(400, function() {
+        $('.tweets').find('li').fadeIn(400);
+      });
+    }
+    
   },
 
   showTweets: function(username) {
