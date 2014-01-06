@@ -17,7 +17,13 @@ var Application = {
         app.showHashtags.call(app, $(this).text());
       });
 
+      $('.composeTweet').on('click', app.displaySendOptions);
+
     });
+  },
+
+  displaySendOptions: function() {
+    $('.composeFields').fadeToggle('hidden');
   },
 
   showTweets: function(username) {

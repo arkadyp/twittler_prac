@@ -7,6 +7,14 @@ button, input, textarea {
 	font-size: 100%;	
 }
 
+button {
+	border-radius: 10px;
+}
+
+button:focus {
+	outline: 0;
+}
+
 ul.tweets {
 	padding-left: 0px;
 	width: 750px;
@@ -30,9 +38,14 @@ li.tweets {
 	cursor: pointer;
 }
 
+.hidden {
+	display: none;
+}
+
 .composeFields {
 	padding: 10px 0px 10px 0px;
 	width: 750px;
+	transition: top .2s;
 }
 
 .enterUsername {
