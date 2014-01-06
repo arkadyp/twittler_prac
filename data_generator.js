@@ -58,12 +58,18 @@ scheduleNextTweet();
 
 // utility function for letting students add "write a tweet" functionality
 // (note: not used by the rest of this file.)
-var writeTweet = function(message){
+var writeTweet = function(message, usermsg){
   if(!visitor){
     throw new Error('set the global visitor property!');
   }
   var tweet = {};
-  tweet.user = visitor;
-  tweet.message = message;
+  if(usermsg) { //if usermsg is passed in, initialize tweet with those values
+    tweet.user = usermsg.user;
+    tweet.message = usermsg.message;
+  } else {
+    tweet.user = visitor;
+    tweet.message = message;    
+  }
   addTweet(tweet);
+  
 };
